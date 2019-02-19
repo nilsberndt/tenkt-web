@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": "auth.uid !== null",
+    "$wbname": {
+      "txt": {
+        "$key": {
+          ".write": "auth.uid !== null && data.exists() && newData.isString() && newData.val().length >= 1 && newData.val().length < 18"
+        }
+      }
+    }
+  }
+}

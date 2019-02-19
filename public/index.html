@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<!-------------------
+---------------------
+  __  ___  _ _______ 
+ /_ |/ _ \| |__   __|
+  | | | | | | _| |   
+  | | | | | |/ / |   
+  | | |_| |   <| |   
+  |_|\___/|_|\_\_|   
+
+---------------------
+--------------------->
+
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	
+	<title>10kT</title>
+	
+	<link rel="stylesheet" type="text/css" href="/utils/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" >
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico" >
+	
+	<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+	<script src="/utils/utils.js"></script>
+	
+</head>
+
+<body onload="firebaseInit();" class="fadein">
+
+	<input id="copytxt" class="copyfrom" tabindex="-1" aria-hidden="true">
+
+	<header>
+		<img src="/images/logo.svg" onclick="showAbout();" alt="10kT" class="shrink">
+		<a onclick="showAbout();"><h3 class="shrink">{about}</h3></a>
+		<h3>{<input type="text" id="userloc" maxlength="18"/>}
+			<button class="round" onclick="validateLoc(document.getElementById('userloc').value)">GO</button>
+		</h3>
+	</header>
+	
+	<div id="about" class="transp fastfadein" onclick="closeAbout();">
+		<a href='https://play.google.com/store/apps/details?id=com.nsb.android.a10kt&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target='_blank'>
+				<img class="shrink" width="30%" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+		<h2>ABOUT</h2>
+		<p><b>10kT</b> is a dynamic, real-time text editing platform where {wordblock}s can be modified 
+			by users from the Android app and viewed live on the web at <b><a href="http://10kt.app">10kt.app</a></b>.
+			Changes are seen immediately across all channels due to a Google Firebase Realtime Database back-end.</p>
+		<p>Based on the idea that <b>10,000 monkeys with 10,000 typewriters would eventually produce the works 
+			of Shakespeare</b>, the app allows users to view and modify their favorite {wordblock}s and take snapshots 
+			of results to share with friends, use for creative inspiration, or for iterative editing with a group.</p>
+		<p><b>10kT</b> is currently in open beta on the 
+		<a href='https://play.google.com/store/apps/details?id=com.nsb.android.a10kt&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><b></u>
+		Google Play Store</u></b></a> for testing and development.</p>
+		<p>Please contact <a href="mailto:nilsberndt@gmail.com"><b><u>nilsberndt@gmail.com</u></b></a> with any questions
+			or comments related to the app or concept.</p>	
+		<button onclick="closeAbout();">CLOSE</button></br></br>
+		<img src="/images/10ktUI.png" alt="10kT App" width="40%">
+	</div>
+
+	<div class="shadow container">
+		<div id="botStatus" class ="invis" width="50%"> 
+					<h3 class="activeuser">This {wordblock} has <b>ACTIVE USERS</b>&nbsp;
+							<img class="glow" src="https://developer.android.com/images/brand/Android_Robot.svg" width="3%"/></h3></div>
+		<div class="dropdown">
+			<button id = "dropButton" onclick="dropDown()" class="dropbtn">{10kt}<i></i></button>
+			<div id="myDropdown" class="dropdown-content">
+				<a onclick="getDB('10kt');">{10kt}</a>
+				<a onclick="getDB('bandnames');">{bandnames}</a>
+				<a onclick="getDB('movietitles');">{movietitles}</a>
+				<a onclick="getDB('lorem');">{lorem}</a>
+			</div>
+		</div>
+		
+		<h2 id="theText" class="fadein">Loading...</h2>  
+	</div>
+	
+	<img src="/images/copy_button.svg" alt="COPY" class="shrink" onclick="saveText()">
+	<h3 id="snapshot">Click to take a snapshot...</h3>
+	
+
+</body>
+</html> 
