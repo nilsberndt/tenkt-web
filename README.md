@@ -1,4 +1,4 @@
-![10kT Logo](/src/main/res/drawable/logo_img.png)
+![10kT Logo](/public/images/logo.svg)
 
 > ### https://10kt.app or '10kT' on Google Play Store
 
